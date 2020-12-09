@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-plugin-export",
+  "name": "nuxt-plugin-exporter",
   "version": "1.0.0",
   "description": "A simple tool to fasten your Nuxt.JS build",
   "main": "src/index.js",

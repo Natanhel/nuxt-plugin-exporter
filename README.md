@@ -1,5 +1,6 @@
 # nuxt-plugin-exporter
 Export your imports into a plugin file!
+
 This repo was created for speeding up your build process of the Nuxt.JS framework
 
 Download into your repo by using

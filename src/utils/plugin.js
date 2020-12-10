@@ -50,7 +50,7 @@ const createPluginCollectiveFile = (pluginsDataSet) => {
 }
 
 const createPluginFiles = (pluginsDataSet) => {
-    console.log('Creating a multiple import files');
+    console.log('Creating multiple import files');
     
     [...pluginsDataSet].forEach(p => {
         const fileData = createPluginFileData(p.name, p.path)

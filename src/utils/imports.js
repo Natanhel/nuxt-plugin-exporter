@@ -18,7 +18,7 @@ const readFileForImports = (fileFullPath, currDir) => {
 const mapImports = (importsArray, currDir) => {
     const imports = importsArray.map(i => {
         const splitImport = i.replace(/"/g,'\'').split('\'')
-        // console.log(splitImport[1]);
+        if ( splitImport.length < 2 ) return {}
         return {
             path: splitImport[1].match(/[@]/) ? 
                     path.join('', splitImport[1].replace('@','.').trim()).replace(/\\/g, '/') : 
@@ -31,7 +31,8 @@ const mapImports = (importsArray, currDir) => {
 
 const prepareImports = (importsArray, currDir = './') => {
     const imports = []
-    mapImports(importsArray, currDir).forEach(imp => {
+    mapImports(importsArray, currDir)
+    .forEach(imp => {
         imports.push(imp)
     })
     return imports

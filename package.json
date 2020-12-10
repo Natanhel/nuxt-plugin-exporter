@@ -2,14 +2,23 @@
   "name": "nuxt-plugin-exporter",
   "version": "1.0.0",
   "description": "A simple tool to fasten your Nuxt.JS build",
-  "main": "src/index.js",
+  "main": "bin/app.js",
   "scripts": {
     "dev": "nodemon src/index.js -e vue,js",
     "start": "node src/index.js"
+  },
+  "bin": {
+    "npe": "bin/app.js"
   },
   "author": "Natanhel Poliszuk <natanhelp@gmail.com> (https://github.com/Natanhel/)",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "boxen": "^4.2.0",
+    "chalk": "^4.1.0",
+    "yargs": "^16.2.0"
   }
 }

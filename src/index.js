@@ -1,18 +1,20 @@
 const readImports = require('./utils/imports')
 const {createPluginDir, createPluginCollectiveFile, createPluginFiles} = require('./utils/plugin')
 
-const buildPlugins = () => {
+const buildPlugins = (single, editConfig) => {
     // Ready the imports set
     console.log('Grabbing your imports');
-    const importsSet = readImports()
+    let importsSet = readImports()
+    // filter undefiend items
+    importsSet = new Set([...importsSet].filter(p => p.name && p.path))
     // Imports are ready to work with
-    console.log('Found imports:', [...importsSet])
+    console.log('Found imports:', importsSet)
     // Create the plugin dir
     createPluginDir()
     // Create the plugin files
-    createPluginFiles(importsSet)
+    single && createPluginFiles(importsSet)
     // Create a single collective file
-    createPluginCollectiveFile(importsSet)
+    !single && createPluginCollectiveFile(importsSet)
     console.log('Process has finished successfully!');
 }
 

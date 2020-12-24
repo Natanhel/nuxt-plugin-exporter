@@ -5,7 +5,9 @@
   "main": "bin/app.js",
   "scripts": {
     "dev": "nodemon src/index.js -e vue,js",
-    "start": "node src/index.js"
+    "build": "node src/index.js",
+    "start": "node src/index.js",
+    "test": "node src/tests/init.js"
   },
   "bin": {
     "npe": "bin/app.js"

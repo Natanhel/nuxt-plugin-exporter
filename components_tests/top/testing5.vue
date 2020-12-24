@@ -5,9 +5,8 @@
 </template>
 
 <script>
-
-    import testing3 from '@/components/bottom/testing2.vue'
-    import testing3 from './innerMain/testing2.vue'
+import testing6 from "./testing6";
+import testing1 from "../main/testing1";
     export default {
         
     }

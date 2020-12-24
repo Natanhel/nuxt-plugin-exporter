@@ -3,6 +3,7 @@ var path = require('path');
 
 const baseDir = './'
 const importsSet = new Set()
+const importsMap = new Map()
 
 const readFileForImports = (fileFullPath, currDir) => {
     try {
@@ -51,8 +52,14 @@ const readImports = (currDir = baseDir) => {
                 if (stat.isFile() && fromPath.match(/.[vue]$/)) {                    
                     const res = readFileForImports(fromPath, currDir)
                     // if there's a result, add it into the set
-                    res && res.forEach(element => {
-                        importsSet.add(element)    
+                    res && res.forEach(e => {
+                        if (importsMap.has(e.name) && importsMap.get(e.name).path !== e.path) {
+                            const ambiguous = importsMap.get(e.name)
+                            console.log('error: ambiguous .vue file names:')
+                            console.log(e.name, ':', e.path, ambiguous)
+                        } else {
+                            importsMap.set(e.name, e.path)
+                        }
                     })
                     
                 } else if (stat.isDirectory()){
@@ -70,6 +77,10 @@ const readImports = (currDir = baseDir) => {
         console.error("Could not list the directory.\n", err);
         process.exit(1);        
     }
+    // convert map to unique set values
+    importsMap.forEach((value,key) => {
+        importsSet.add(JSON.stringify({name: key, path: value}))
+    })
     return importsSet
 }
 

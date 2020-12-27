@@ -20,7 +20,10 @@ const createPluginDir = () => {
 const createPluginFileData = (name, relativePath) => {
     let fileData = 'import Vue from \'vue\'\n' // Import Vue first
     fileData += 'import ' + name + ' from \'' + relativePath + '\'\n'
-    fileData += 'Vue.use(' + name + ')'
+    var re = /[a-zA-Z0-9]+/g
+    const sanitizeName = (name.match(re) || []).join('')
+    fileData += 'Vue.use(' + sanitizeName + ')'
+    // fileData +=  sanitizeName
     return fileData
 }
 
@@ -34,7 +37,12 @@ const createPluginCollectiveFile = (pluginsDataSet) => {
     });
 
     [...pluginsDataSet].forEach(p => {
-        fileData += 'Vue.use(' + p.name + ')\n'
+        // Should sanitize the name since it can be a destructor
+        const sanitizer = (p.name.match(/[a-zA-Z0-9\,]+/g) || []).join('')
+        // handle a, {a}, {a, b, ...} imports
+        sanitizer.split(',').forEach(name => {
+            fileData += 'Vue.use(' + name + ')\n'
+        })        
     })
     
     const filePath = path.join(basePath ,'collective-plugins.js')

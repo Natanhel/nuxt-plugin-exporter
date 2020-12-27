@@ -18,9 +18,9 @@ const clearComponentsDirectory = () => {
     console.log('deleted components directory')
 }
 
-const runBuilder = () => {
+const runBuilder = (single) => {
     console.log('Running builder...')
-    pluginBuilder()
+    pluginBuilder('./components', single)
     console.log('Built plugins files successfully');
 }
 

@@ -5,10 +5,8 @@ const yargs = require('yargs')
 const buildPlugins = require('../src/index.js')
 
 yargs.version('1.1.0')
-
-// if (yargs.argv.single) {    
+ 
 console.log('printing s single file:',yargs.argv.single);
-buildPlugins(yargs.argv.single)
-// }
+buildPlugins(yargs.argv.base | './components', yargs.argv.single, yargs.argv.single, yargs.argv.edit)
 
 yargs.argv

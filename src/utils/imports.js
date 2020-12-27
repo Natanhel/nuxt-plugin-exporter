@@ -8,7 +8,7 @@ const importsMap = new Map()
 const readFileForImports = (fileFullPath, currDir) => {
     try {
         const data = fs.readFileSync(fileFullPath, 'utf-8')
-        let importsFromFile = data.split('\n').filter(line => line.match(/import*/))        
+        let importsFromFile = data.split('\n').filter(line => line.match(/^import*/))        
         return prepareImports(importsFromFile, currDir)        
     } catch (err) {
         console.error("Could not read the file.\n", err);

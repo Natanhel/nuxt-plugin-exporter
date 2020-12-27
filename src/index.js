@@ -6,7 +6,7 @@ const buildPlugins = (basicVueComponentsFolder = './components',single, editConf
     console.log('Grabbing your imports');
     let importsSet = readImports(basicVueComponentsFolder)
     // filter undefiend items
-    importsSet = new Set([...importsSet].map(e => JSON.parse(e)).filter(p => p.name && p.path))
+    importsSet = new Set([...importsSet].map(e => JSON.parse(e)))
     // Imports are ready to work with
     console.log('Found imports:', importsSet)
     // Create the plugin dir

@@ -1,6 +1,6 @@
 {
   "name": "nuxt-plugin-exporter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple tool to fasten your Nuxt.JS build",
   "main": "bin/app.js",
   "scripts": {

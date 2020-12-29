@@ -41,7 +41,7 @@ const prepareImports = (importsArray, currDir = './') => {
 
 const readImports = (currDir = baseDir) => {
     // Loop through all the files in the directory
-    try {        
+    try {
         const files = fs.readdirSync(currDir)
         files.forEach(file => {
             var fromPath = path.join(currDir, file)
